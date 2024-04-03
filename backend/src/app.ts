@@ -24,7 +24,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
 // Routes
+import classRoutes from "./routes/class.routes"
+import teacherRoutes from "./routes/teachers.routes"
+import studentRoutes from "./routes/students.routes"
 
+app.use("/api/v1/class", classRoutes)
+app.use("/api/v1/teacher", teacherRoutes)
+app.use("/api/v1/student", studentRoutes)
 
 
 const options = { explorer: true, }
