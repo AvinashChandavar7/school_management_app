@@ -3,6 +3,8 @@ import { ApiResponse } from "../utils/ApiResponse";
 import { asyncHandler } from "../utils/asyncHandler";
 import Student from "../models/student.model";
 
+import Class from "../models/class.model";
+
 const createStudent = asyncHandler(async (req, res) => {
   //#swagger.tags = ['Student']
 
@@ -27,6 +29,12 @@ const createStudent = asyncHandler(async (req, res) => {
   if (!newStudent) {
     throw new ApiError(500, "Failed to create student");
   }
+
+  await Class.findOneAndUpdate(
+    { _id: newStudent.class },
+    { $addToSet: { students: newStudent._id } },
+    { new: true }
+  );
 
   return res.status(201).json(new ApiResponse(201, newStudent, "Student created successfully"));
 });
@@ -56,6 +64,12 @@ const updateStudent = asyncHandler(async (req, res) => {
   if (!updatedStudent) {
     throw new ApiError(500, "Failed to update student");
   }
+
+  await Class.findOneAndUpdate(
+    { _id: updatedStudent.class },
+    { $addToSet: { students: updatedStudent._id } },
+    { new: true }
+  );
 
   return res.status(200).json(new ApiResponse(200, updatedStudent, "Student updated successfully"));
 });

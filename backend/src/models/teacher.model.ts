@@ -17,7 +17,7 @@ const teacherSchema: Schema<TeacherDocument> = new Schema(
     dob: { type: Date, required: true, },
     contactDetails: { type: String, required: true, },
     salary: { type: Number, required: true, },
-    assignedClass: { type: Schema.Types.ObjectId, ref: 'Class', required: true, },
+    assignedClass: { type: Schema.Types.ObjectId, ref: 'Class', },
   },
   { timestamps: true }
 );

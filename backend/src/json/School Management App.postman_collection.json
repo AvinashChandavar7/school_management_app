@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "979c2df3-f6b5-4579-adc4-2704351c29d8",
+		"name": "School Management App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21984380"
+	},
+	"item": [
+		{
+			"name": "Classes",
+			"item": [
+				{
+					"name": "get Class By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da2b673508a5afdd4ad41"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get All class",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create class",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Std number 2 \",\r\n    \"year\": 2034,\r\n    \"studentFees\": 100,\r\n    \"maxCapacity\": 30,\r\n    \"teacher\": \"660dabd8dececd4599101b11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update class",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Class Number 2\",\r\n    \"year\": 2034,\r\n    \"studentFees\": 1000,\r\n    \"maxCapacity\": 30,\r\n    \"teacher\": \"660da8f4775471e637dfad68\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da929775471e637dfad6d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Class",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660d9f9c07d38804246d0e85"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "class-analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/:id/class-analytics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								":id",
+								"class-analytics"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660dabe9dececd4599101b15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "financial-analytics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/class/:id/financial-analytics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"class",
+								":id",
+								"financial-analytics"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660dabe9dececd4599101b15"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "get Teacher",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/teacher/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create teacher",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"priya sharma\",\r\n  \"gender\": \"female\",\r\n  \"dob\": \"1985-05-15\",\r\n  \"contactDetails\": \"priya.sharma@example.com\",\r\n  \"salary\": 55000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/teacher/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update teacher",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"assignedClass\": \"660da2b673508a5afdd4ad41\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/teacher/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da44b73508a5afdd4ad59"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Teacher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/teacher/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660d9f1876bd17a31dd2e803"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTeacherById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/teacher/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"teacher",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da44b73508a5afdd4ad59"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "get Student",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/student/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Aishwarya Singh\",\r\n  \"gender\": \"female\",\r\n  \"dob\": \"2005-04-22\",\r\n  \"contactDetails\": \"aishwarya.singh@example.com\",\r\n  \"feesPaid\": 22000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/student/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update student",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"class\": \"660dabe9dececd4599101b15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/student/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660dacde36a2489f92d14ff6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete student",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/student/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da6e637991de1dc699052"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getStudentById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/student/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"student",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "660da44b73508a5afdd4ad59"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

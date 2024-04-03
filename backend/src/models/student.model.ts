@@ -17,7 +17,7 @@ const studentSchema: Schema<StudentDocument> = new Schema(
     dob: { type: Date, required: true, },
     contactDetails: { type: String, required: true, },
     feesPaid: { type: Number, required: true, default: 0, },
-    class: { type: Schema.Types.ObjectId, ref: 'Class', required: true, },
+    class: { type: Schema.Types.ObjectId, ref: 'Class', },
   },
   { timestamps: true }
 );

@@ -1,15 +1,13 @@
 import { Schema, models, model, Document } from "mongoose";
 
-import { TeacherDocument } from "./teacher.model";
-import { StudentDocument } from "./student.model";
 
 export interface ClassType extends Document {
   name: string;
   year: number;
   studentFees: number;
   maxCapacity: number;
-  teacher: TeacherDocument['_id'];
-  students: StudentDocument['_id'][];
+  teacher: Schema.Types.ObjectId;
+  students: Schema.Types.ObjectId[];
 }
 export interface ClassDocument extends Document, ClassType { }
 
@@ -19,8 +17,8 @@ const classSchema: Schema<ClassDocument> = new Schema(
     year: { type: Number, required: true, min: 1990, },
     studentFees: { type: Number, required: true, },
     maxCapacity: { type: Number, required: true, min: 1, max: 60 },
-    teacher: { type: Schema.Types.ObjectId, ref: 'Teacher', required: true, },
-    students: [{ type: Schema.Types.ObjectId, ref: 'Student', default: [], }],
+    teacher: { type: Schema.Types.ObjectId, ref: 'Teacher' },
+    students: [{ type: Schema.Types.ObjectId, ref: 'Student', }],
   },
   { timestamps: true }
 );

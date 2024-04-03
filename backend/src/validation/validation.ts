@@ -9,7 +9,7 @@ const classSchema: Schema<ClassType> = Joi.object({
   year: Joi.number().integer().min(1990).required(),
   studentFees: Joi.number().positive().required(),
   maxCapacity: Joi.number().integer().min(1).max(60).required(),
-  teacher: Joi.string().required(),
+  teacher: Joi.string().optional(),
 });
 
 const teacherSchema: Schema<TeacherType> = Joi.object({
@@ -18,7 +18,7 @@ const teacherSchema: Schema<TeacherType> = Joi.object({
   dob: Joi.date().required(),
   contactDetails: Joi.string().required(),
   salary: Joi.number().positive().required(),
-  assignedClass: Joi.string().required(),
+  assignedClass: Joi.string().optional(),
 });
 
 const studentSchema: Schema<StudentType> = Joi.object({
@@ -27,7 +27,7 @@ const studentSchema: Schema<StudentType> = Joi.object({
   dob: Joi.date().required(),
   contactDetails: Joi.string().required(),
   feesPaid: Joi.number().positive().required(),
-  class: Joi.string().required(),
+  class: Joi.string().optional(),
 });
 
 export { classSchema, teacherSchema, studentSchema }
