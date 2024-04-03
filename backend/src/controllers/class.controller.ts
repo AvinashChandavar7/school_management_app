@@ -160,7 +160,7 @@ const getAllClasses = asyncHandler(async (req, res) => {
 
 
 const getClassAnalytics = asyncHandler(async (req, res) => {
-  //#swagger.tags = ['Class']
+  //#swagger.tags = ['Class Analytics']
 
   const { id } = req.params;
 
@@ -186,7 +186,7 @@ const getClassAnalytics = asyncHandler(async (req, res) => {
 });
 
 const getFinancialAnalytics = asyncHandler(async (req, res) => {
-  //#swagger.tags = ['Class']
+  //#swagger.tags = ['Class Analytics']
 
   const { id } = req.params;
 

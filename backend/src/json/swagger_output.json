@@ -177,7 +177,7 @@
     "/api/v1/class/{id}/class-analytics": {
       "get": {
         "tags": [
-          "Class"
+          "Class Analytics"
         ],
         "description": "",
         "parameters": [
@@ -203,7 +203,7 @@
     "/api/v1/class/{id}/financial-analytics": {
       "get": {
         "tags": [
-          "Class"
+          "Class Analytics"
         ],
         "description": "",
         "parameters": [
