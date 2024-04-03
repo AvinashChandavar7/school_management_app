@@ -101,11 +101,11 @@ const getClassById = asyncHandler(async (req, res) => {
 
 const getAllClasses = asyncHandler(async (req, res) => {
 
-  const { searchQuery, filter, pageNumber = "1", pageSize = "10" } = req.query as unknown as {
+  const { searchQuery, filter, pageNumber = "1", pageSize = "10" } = req.query as {
     searchQuery?: string,
     filter?: string,
-    pageNumber: string,
-    pageSize: string
+    pageNumber?: string,
+    pageSize?: string
   };
 
   const page: number = parseInt(pageNumber, 10) || 1;
@@ -115,23 +115,24 @@ const getAllClasses = asyncHandler(async (req, res) => {
   const query: FilterQuery<ClassDocument> = {};
 
   if (searchQuery) {
-    query.$or = [
-      { name: { $regex: new RegExp(searchQuery, "i") } },
-    ]
+    query.$or = [{ name: { $regex: new RegExp(searchQuery, "i") } },]
   }
 
   let sortOptions = {};
 
   switch (filter) {
     case "name":
-      sortOptions = { createdAt: -1 }
+      sortOptions = { name: 1 };
+      break;
+    case "year":
+      sortOptions = { year: 1 };
       break;
     default:
       sortOptions = { createdAt: 1 };
       break;
   }
 
-  const classes = await Class.find({})
+  const classes = await Class.find(query)
     .sort(sortOptions)
     .skip(skipAmount)
     .limit(limit);
