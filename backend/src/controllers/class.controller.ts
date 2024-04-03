@@ -9,6 +9,7 @@ import Student from "../models/student.model";
 
 
 const createClass = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const {
     name, year, studentFees, maxCapacity, teacher
@@ -37,6 +38,7 @@ const createClass = asyncHandler(async (req, res) => {
 });
 
 const updateClass = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const { id } = req.params;
   const { name, year } = req.body;
@@ -65,6 +67,7 @@ const updateClass = asyncHandler(async (req, res) => {
 
 
 const deleteClass = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const { id } = req.params;
 
@@ -86,6 +89,7 @@ const deleteClass = asyncHandler(async (req, res) => {
 
 
 const getClassById = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const { id } = req.params;
 
@@ -100,6 +104,7 @@ const getClassById = asyncHandler(async (req, res) => {
 });
 
 const getAllClasses = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const { searchQuery, filter, pageNumber = "1", pageSize = "10" } = req.query as {
     searchQuery?: string,
@@ -155,6 +160,7 @@ const getAllClasses = asyncHandler(async (req, res) => {
 
 
 const getClassAnalytics = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
 
   const { id } = req.params;
 
@@ -180,6 +186,8 @@ const getClassAnalytics = asyncHandler(async (req, res) => {
 });
 
 const getFinancialAnalytics = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Class']
+
   const { id } = req.params;
 
   const classDetails = await Class.findById(id)

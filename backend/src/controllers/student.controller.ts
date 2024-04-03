@@ -4,6 +4,8 @@ import { asyncHandler } from "../utils/asyncHandler";
 import Student from "../models/student.model";
 
 const createStudent = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Student']
+
   const {
     name, gender, dob, contactDetails, feesPaid, class: studentClass
   } = req.body;
@@ -30,6 +32,8 @@ const createStudent = asyncHandler(async (req, res) => {
 });
 
 const updateStudent = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Student']
+
   const { id } = req.params;
 
   const { name, gender, dob } = req.body;
@@ -57,6 +61,8 @@ const updateStudent = asyncHandler(async (req, res) => {
 });
 
 const deleteStudent = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Student']
+
   const { id } = req.params;
 
   const existingStudent = await Student.findById(id);
@@ -75,6 +81,8 @@ const deleteStudent = asyncHandler(async (req, res) => {
 });
 
 const getStudentById = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Student']
+
   const { id } = req.params;
 
   const student = await Student.findById(id);
@@ -87,6 +95,7 @@ const getStudentById = asyncHandler(async (req, res) => {
 });
 
 const getAllStudents = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Student']
 
   const students = await Student.find();
 

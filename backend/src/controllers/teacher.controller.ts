@@ -6,6 +6,8 @@ import Teacher from "../models/teacher.model";
 
 
 const createTeacher = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Teacher']
+
   const {
     name, gender, dob, contactDetails, salary, assignedClass
   } = req.body;
@@ -34,6 +36,8 @@ const createTeacher = asyncHandler(async (req, res) => {
 
 
 const updateTeacher = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Teacher']
+
   const { id } = req.params;
 
   const existingTeacher = await Teacher.findById(id);
@@ -51,6 +55,8 @@ const updateTeacher = asyncHandler(async (req, res) => {
 
 
 const deleteTeacher = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Teacher']
+
   const { id } = req.params;
 
   const existingTeacher = await Teacher.findById(id);
@@ -66,6 +72,8 @@ const deleteTeacher = asyncHandler(async (req, res) => {
 
 
 const getTeacherById = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Teacher']
+
   const { id } = req.params;
 
   const teacher = await Teacher.findById(id);
@@ -78,6 +86,7 @@ const getTeacherById = asyncHandler(async (req, res) => {
 });
 
 const getAllTeachers = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Teacher']
 
   const teachers = await Teacher.find();
 
