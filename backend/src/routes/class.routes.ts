@@ -1,6 +1,9 @@
 import { Router } from "express";
 
 import checkClassCapacity from "../middleware/checkClassCapacity.middleware";
+import validateData from "../middleware/validateData.middleware";
+
+import { classSchema } from "../validation/validation";
 
 import {
   getAllClasses,
@@ -16,7 +19,7 @@ import {
 
 const router = Router();
 
-router.post('/', checkClassCapacity, createClass);
+router.post('/', validateData(classSchema), checkClassCapacity, createClass);
 router.put('/:id', updateClass);
 router.delete('/:id', deleteClass);
 
