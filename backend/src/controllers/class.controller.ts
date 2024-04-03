@@ -157,7 +157,9 @@ const getClassAnalytics = asyncHandler(async (req, res) => {
 
   const { id } = req.params;
 
-  const classDetails = await Class.findById(id);
+  const classDetails = await Class.findById(id)
+    .populate('teacher')
+    .populate('students')
 
   if (!classDetails) {
     return res.status(404).json({ error: 'Class not found' });
@@ -165,18 +167,42 @@ const getClassAnalytics = asyncHandler(async (req, res) => {
 
   const maleStudentsCount = await Student.countDocuments({ class: id, gender: 'male' });
   const femaleStudentsCount = await Student.countDocuments({ class: id, gender: 'female' });
-  const totalExpenses = classDetails.teacher.salary;
 
-  const analyticsData = {
+  const classAnalyticsData = {
     classDetails,
     maleStudentsCount,
     femaleStudentsCount,
-    totalExpenses
   };
 
   return res.status(200)
-    .json(new ApiResponse(200, analyticsData, "Class found"));
+    .json(new ApiResponse(200, classAnalyticsData, "Class Analytics Data"));
 });
+
+const getFinancialAnalytics = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const classDetails = await Class.findById(id)
+    .populate('teacher')
+    .populate('students');
+
+  if (!classDetails) {
+    return res.status(404).json({ error: 'Class not found' });
+  }
+
+  const totalTeacherSalary = classDetails.teacher.salary;
+
+  const totalFeesPaid = classDetails.students.reduce(
+    (total: number, student: any) => total + student.feesPaid, 0
+  );
+
+  const financialAnalyticsData = {
+    totalTeacherSalary,
+    totalIncomeFromFees: totalFeesPaid
+  };
+
+  return res.status(200)
+    .json(new ApiResponse(200, financialAnalyticsData, "Financial Analytics Data"));
+})
 
 
 export {
@@ -187,4 +213,5 @@ export {
   deleteClass,
 
   getClassAnalytics,
+  getFinancialAnalytics
 }
