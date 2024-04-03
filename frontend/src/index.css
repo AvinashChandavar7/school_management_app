@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #edeaea;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #b016d6;
+}
+
+.dark {
+  @apply bg-[#020020]  text-white transition-all ease-in duration-200;
+}
+
+.light {
+  @apply text-gray-900 transition-all duration-200 ease-in bg-white;
+}
