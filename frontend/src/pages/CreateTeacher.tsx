@@ -1,4 +1,4 @@
-import CreateTeacherForm from "../components/forms/CreateTeacherForm";
+import CreateTeacherForm from "../components/forms/CreateStudentForm";
 import Heading from "../components/shared/Heading"
 
 const CreateTeacher = () => {
