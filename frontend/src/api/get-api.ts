@@ -58,7 +58,7 @@ export const useGetClass = () => {
     }
 
     const data = response.json();
-    console.log(data);
+
     return data
   };
 
@@ -74,6 +74,8 @@ export const useGetClass = () => {
 
   return { classes, isLoading, isError, isSuccess };
 };
+
+
 
 
 
