@@ -4,7 +4,7 @@ import { Link, } from 'react-router-dom';
 const Topbar = () => {
   return (
     <section className="sticky top-0 z-50 w-full bg-blue-100 md:hidden">
-      <div className="flex items-center justify-between px-5 py-4">
+      <div className="flex items-center justify-between px-5 py-2">
         <Link to="/" className="flex items-center gap-3">
           <img src="/assets/icons/logo.svg" alt="logo" className='w-12 h-12 rounded-full'
           />
