@@ -38,10 +38,10 @@ app.use("/api/v1/student", studentRoutes)
 const options = { explorer: true, }
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput, options));
 
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(
-    path.join(__dirname, "../../frontend/dist/index.html")
-  );
-})
+// app.get("*", (req: Request, res: Response) => {
+//   res.sendFile(
+//     path.join(__dirname, "../../frontend/dist/index.html")
+//   );
+// })
 
 export { app };
