@@ -3,6 +3,7 @@ import Layout from "./layouts/Layout"
 import CreateTeacher from "./pages/CreateStudent"
 import CreateStudent from "./pages/CreateStudent"
 import CreateClass from "./pages/CreateClass"
+import TeacherTable from "./components/tables/TeacherTable"
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
 
 
           <Route path="/create-teacher" element={<CreateTeacher />} />
+          <Route path="/teacher-table" element={<TeacherTable />} />
           <Route path="/edit-teacher/:id" element={"edit teacher"} />
 
           <Route path="/create-student" element={<CreateStudent />} />
