@@ -5,6 +5,7 @@ import CreateStudent from "./pages/CreateStudent"
 import CreateClass from "./pages/CreateClass"
 import TeacherTable from "./components/tables/TeacherTable"
 import StudentTable from "./components/tables/StudentTable"
+import ClassTable from "./components/tables/ClassTable"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route element={<Layout />} >
           <Route path="/" element={"DashBoard"} />
           <Route path="/create-class" element={<CreateClass />} />
+          <Route path="/class-table" element={<ClassTable />} />
           <Route path="/edit-class/:id" element={"edit class"} />
 
 

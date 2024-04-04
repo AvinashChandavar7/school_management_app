@@ -1,6 +1,7 @@
 export const sidebarLinks = [
   { label: "Dashboard", route: "/", imgURL: "/assets/icons/home.svg", },
   { label: "Create Class", route: "/create-class", imgURL: "/assets/icons/edit.svg", },
+  { label: "Table Class", route: "/class-table", imgURL: "/assets/icons/edit.svg", },
   // { label: "Edit Class", route: "/edit-class/:id", imgURL: "/assets/icons/add-post.svg", },
   { label: "Create Teacher", route: "/create-teacher", imgURL: "/assets/icons/edit.svg", },
   { label: "Table Teacher", route: "/teacher-table", imgURL: "/assets/icons/edit.svg", },

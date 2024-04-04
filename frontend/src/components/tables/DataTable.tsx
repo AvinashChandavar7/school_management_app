@@ -10,7 +10,7 @@ interface DataTableProps {
 const DataTable: React.FC<DataTableProps> = ({ data, headers, excludeKeys }) => {
   const renderTableHeader = () => {
     return headers.map((header, index) => (
-      <th key={index} className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+      <th key={index} className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase text-balance">
         {header}
       </th>
     ));
@@ -25,7 +25,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, headers, excludeKeys }) => 
         )
         .map(
           ([key, value], idx) => (
-            <td key={idx} className="px-6 py-4 whitespace-nowrap">
+            <td key={idx} className="px-6 py-4 text-center text-balance whitespace-nowrap">
               {key === 'dob' ? formatDate(value) : value}
             </td>
           )

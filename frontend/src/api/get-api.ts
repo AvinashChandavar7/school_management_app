@@ -48,3 +48,32 @@ export const useGetStudent = () => {
   return { students, isLoading, isError, isSuccess };
 };
 
+
+export const useGetClass = () => {
+  const getClass = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/v1/class/`);
+
+    if (!response.ok) {
+      throw new Error('Failed to get classes');
+    }
+
+    const data = response.json();
+    console.log(data);
+    return data
+  };
+
+
+  const {
+    data: classData,
+    isLoading,
+    isError,
+    isSuccess
+  } = useQuery('classes', getClass);
+
+  const classes = classData?.data || [];
+
+  return { classes, isLoading, isError, isSuccess };
+};
+
+
+
