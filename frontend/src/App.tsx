@@ -4,6 +4,7 @@ import CreateTeacher from "./pages/CreateStudent"
 import CreateStudent from "./pages/CreateStudent"
 import CreateClass from "./pages/CreateClass"
 import TeacherTable from "./components/tables/TeacherTable"
+import StudentTable from "./components/tables/StudentTable"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/edit-teacher/:id" element={"edit teacher"} />
 
           <Route path="/create-student" element={<CreateStudent />} />
+          <Route path="/student-table" element={<StudentTable />} />
           <Route path="/edit-student/:id" element={"edit student"} />
 
 

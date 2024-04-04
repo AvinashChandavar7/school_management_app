@@ -20,9 +20,31 @@ export const useGetTeacher = () => {
     isSuccess
   } = useQuery('teachers', getTeacher);
 
-  // Ensure teacherData is initialized as an empty array if it's initially null or undefined
   const teachers = teacherData?.data || [];
 
   return { teachers, isLoading, isError, isSuccess };
+};
+
+export const useGetStudent = () => {
+  const getStudent = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/v1/student/`);
+
+    if (!response.ok) {
+      throw new Error('Failed to get students');
+    }
+
+    return response.json();
+  };
+
+  const {
+    data: studentData,
+    isLoading,
+    isError,
+    isSuccess
+  } = useQuery('students', getStudent);
+
+  const students = studentData?.data || [];
+
+  return { students, isLoading, isError, isSuccess };
 };
 
