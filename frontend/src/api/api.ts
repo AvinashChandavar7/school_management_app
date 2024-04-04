@@ -2,6 +2,7 @@ import { useMutation } from "react-query";
 
 import { StudentType } from "../components/forms/CreateStudentForm";
 import { TeacherType } from "../components/forms/CreateTeacherForm";
+import { ClassType } from "../components/forms/CreateClassForm";
 
 export const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL as string;
 
@@ -53,4 +54,30 @@ export const useCreateStudent = () => {
   } = useMutation(createStudent);
 
   return { createStudentAsync, isLoading, isError, isSuccess };
+};
+
+
+export const useCreateClass = () => {
+  const createClass = async (formData: ClassType) => {
+    const response = await fetch(`${API_BASE_URL}/api/v1/class/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to create class");
+    }
+
+    return response.json();
+  };
+
+  const {
+    mutateAsync: createClassAsync,
+    isLoading,
+    isError,
+    isSuccess
+  } = useMutation(createClass);
+
+  return { createClassAsync, isLoading, isError, isSuccess };
 };

@@ -2,6 +2,7 @@ import { Navigate, Route, Routes, } from "react-router-dom"
 import Layout from "./layouts/Layout"
 import CreateTeacher from "./pages/CreateStudent"
 import CreateStudent from "./pages/CreateStudent"
+import CreateClass from "./pages/CreateClass"
 
 const App = () => {
   return (
@@ -10,7 +11,7 @@ const App = () => {
 
         <Route element={<Layout />} >
           <Route path="/" element={"DashBoard"} />
-          <Route path="/create-class" element={"Class"} />
+          <Route path="/create-class" element={<CreateClass />} />
           <Route path="/edit-class/:id" element={"edit class"} />
 
 
