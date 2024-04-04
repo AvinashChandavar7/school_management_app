@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 
-export const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL as string;
+import { API_BASE_URL } from '../constants/config';
+
 
 export const useGetTeacher = () => {
   const getTeacher = async () => {

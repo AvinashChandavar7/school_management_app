@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import { API_BASE_URL } from '../constants/config';
 
 export interface ClassAnalyticsData {
   femaleStudentsCount: number;
@@ -9,8 +10,6 @@ export interface FinancialAnalyticsData {
   totalTeacherSalary: number;
   totalIncomeFromFees: number;
 }
-
-export const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL as string;
 
 export const useClassAnalytics = (classId: string) => {
   const getClassAnalytics = async () => {

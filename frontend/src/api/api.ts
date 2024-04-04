@@ -4,7 +4,8 @@ import { StudentType } from "../components/forms/CreateStudentForm";
 import { TeacherType } from "../components/forms/CreateTeacherForm";
 import { ClassType } from "../components/forms/CreateClassForm";
 
-export const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL as string;
+import { API_BASE_URL } from "../constants/config";
+
 
 export const useCreateTeacher = () => {
   const createTeacher = async (formData: TeacherType) => {
