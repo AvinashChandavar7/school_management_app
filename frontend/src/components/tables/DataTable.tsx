@@ -10,7 +10,7 @@ interface DataTableProps {
 const DataTable: React.FC<DataTableProps> = ({ data, headers, excludeKeys }) => {
   const renderTableHeader = () => {
     return headers.map((header, index) => (
-      <th key={index} className="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase text-balance">
+      <th key={index} className="px-6 py-3 font-bold tracking-wider text-center text-gray-500 uppercase text-md text-balance">
         {header}
       </th>
     ));
@@ -40,15 +40,18 @@ const DataTable: React.FC<DataTableProps> = ({ data, headers, excludeKeys }) => 
   };
 
   return (
-    <div>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="relative rounded-lg shadow-md">
+      <table className="w-full text-left text-gray-500 border-collapse text-md rtl:text-right ">
+        <thead className="uppercase bg-gray-200 w-fit text-md ">
           <tr>{renderTableHeader()}</tr>
         </thead>
-        <tbody>{renderTableBody()}</tbody>
+        <tbody>
+          {renderTableBody()}
+        </tbody>
       </table>
     </div>
   );
 };
 
 export default DataTable;
+
