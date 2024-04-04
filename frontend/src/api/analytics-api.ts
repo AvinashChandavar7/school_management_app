@@ -1,11 +1,11 @@
 import { useQuery } from 'react-query';
 
-interface ClassAnalyticsData {
-  date: string;
-  average_time: number;
+export interface ClassAnalyticsData {
+  femaleStudentsCount: number;
+  maleStudentsCount: number;
 }
 
-interface FinancialAnalyticsData {
+export interface FinancialAnalyticsData {
   totalTeacherSalary: number;
   totalIncomeFromFees: number;
 }
@@ -20,7 +20,9 @@ export const useClassAnalytics = (classId: string) => {
       throw new Error('Failed to fetch class analytics');
     }
 
-    return response.json() as Promise<ClassAnalyticsData[]>;
+    const { data } = await response.json();
+
+    return data
   };
 
   const {
@@ -28,9 +30,7 @@ export const useClassAnalytics = (classId: string) => {
     isLoading,
     isError,
     refetch
-  } = useQuery<ClassAnalyticsData[], Error>(
-    'classAnalytics', getClassAnalytics
-  );
+  } = useQuery('classAnalytics', getClassAnalytics);
 
   return { classAnalytics, isLoading, isError, refetch };
 };
@@ -43,7 +43,9 @@ export const useFinancialAnalytics = (classId: string) => {
       throw new Error('Failed to fetch financial analytics');
     }
 
-    return response.json() as Promise<FinancialAnalyticsData>; // Explicitly cast to FinancialAnalyticsData
+    const { data } = await response.json();
+
+    return data
   };
 
   const {
@@ -51,9 +53,7 @@ export const useFinancialAnalytics = (classId: string) => {
     isLoading,
     isError,
     refetch
-  } = useQuery<FinancialAnalyticsData, Error>(
-    'financialAnalytics', getFinancialAnalytics
-  );
+  } = useQuery('financialAnalytics', getFinancialAnalytics);
 
   return { financialAnalytics, isLoading, isError, refetch };
 };

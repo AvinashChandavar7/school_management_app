@@ -164,19 +164,19 @@ const getClassAnalytics = asyncHandler(async (req, res) => {
 
   const { id } = req.params;
 
-  const classDetails = await Class.findById(id)
-    .populate('teacher')
-    .populate('students')
+  // const classDetails = await Class.findById(id)
+  //   .populate('teacher')
+  //   .populate('students')
 
-  if (!classDetails) {
-    return res.status(404).json({ error: 'Class not found' });
-  }
+  // if (!classDetails) {
+  //   return res.status(404).json({ error: 'Class not found' });
+  // }
 
   const maleStudentsCount = await Student.countDocuments({ class: id, gender: 'male' });
   const femaleStudentsCount = await Student.countDocuments({ class: id, gender: 'female' });
 
   const classAnalyticsData = {
-    classDetails,
+    // classDetails,
     maleStudentsCount,
     femaleStudentsCount,
   };
