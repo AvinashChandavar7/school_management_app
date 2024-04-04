@@ -23,7 +23,6 @@ const DashBoardComponent = () => {
     isError: isFinancialError,
   } = useFinancialAnalytics(classId);
 
-  console.log(financialAnalytics);
 
   if (isClassLoading || isFinancialLoading) {
     return <div>Loading...</div>;

@@ -42,7 +42,6 @@ const CreateStudentForm = ({ action }: StudentFormProps) => {
   const onSubmit = async (data: StudentType) => {
     try {
       await createStudentAsync(data);
-      console.log("Student created successfully");
       reset();
     } catch (error) {
       console.error("Failed to create student:", error);

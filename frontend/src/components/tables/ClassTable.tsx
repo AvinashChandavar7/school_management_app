@@ -6,7 +6,6 @@ import Heading from '../shared/Heading';
 const ClassTable: React.FC = () => {
   const { classes, isLoading, isError } = useGetClass();
 
-  console.log(classes);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;

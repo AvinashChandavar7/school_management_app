@@ -40,7 +40,6 @@ const CreateTeacherForm = ({ action }: TeacherFormProps) => {
   const onSubmit = async (data: TeacherType) => {
     try {
       await createTeacherAsync(data);
-      console.log("Teacher created successfully");
       reset();
     } catch (error) {
       console.error("Failed to create teacher:", error);

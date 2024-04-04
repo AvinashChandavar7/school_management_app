@@ -35,7 +35,6 @@ const CreateClassForm = ({ action }: ClassFormProps) => {
   const onSubmit = async (data: ClassType) => {
     try {
       await createClassAsync(data);
-      console.log("Class created successfully");
       reset();
     } catch (error) {
       console.error("Failed to create class:", error);
