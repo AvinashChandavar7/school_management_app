@@ -1,11 +1,16 @@
-import React from 'react';
-import { useGetClass } from '../../api/get-api';
+import React, { useState } from 'react';
+import { useGetClassPagination } from '../../api/get-api';
 import DataTable from './DataTable';
 import Heading from '../shared/Heading';
+import Pagination from './Pagination';
 
 const ClassTable: React.FC = () => {
-  const { classes, isLoading, isError } = useGetClass();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const { classes, isLoading, isError } = useGetClassPagination(currentPage);
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
@@ -22,6 +27,8 @@ const ClassTable: React.FC = () => {
         </div>
 
         <DataTable data={classes.data} headers={headers} excludeKeys={excludeKeys} />
+
+        <Pagination totalPages={classes.totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
       </div>
     </div>
   );

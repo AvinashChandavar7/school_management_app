@@ -76,6 +76,32 @@ export const useGetClass = () => {
   return { classes, isLoading, isError, isSuccess };
 };
 
+export const useGetClassPagination = (pageNumber: number) => {
+  console.log("useGetClassPagination", pageNumber);
+  const getClass = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/v1/class?pageNumber=${pageNumber}`);
+
+    if (!response.ok) {
+      throw new Error('Failed to get classes');
+    }
+
+    const data = response.json();
+
+    return data
+  };
+
+
+  const {
+    data: classData,
+    isLoading,
+    isError,
+    isSuccess
+  } = useQuery('classes', getClass);
+
+  const classes = classData?.data || [];
+
+  return { classes, isLoading, isError, isSuccess };
+};
 
 
 
