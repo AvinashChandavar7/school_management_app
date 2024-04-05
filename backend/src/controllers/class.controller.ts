@@ -103,19 +103,73 @@ const getClassById = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, foundClass, "Class found"));
 });
 
+// const getAllClasses = asyncHandler(async (req, res) => {
+//   //#swagger.tags = ['Class']
+
+//   const { searchQuery, filter, pageNumber = "1", pageSize = "10" } = req.query as {
+//     searchQuery?: string,
+//     filter?: string,
+//     pageNumber?: string,
+//     pageSize?: string
+//   };
+
+//   const page: number = parseInt(pageNumber, 10) || 1;
+//   const limit: number = parseInt(pageSize, 10) || 10;
+//   const skipAmount: number = (page - 1) * limit;
+
+//   const query: FilterQuery<ClassDocument> = {};
+
+//   if (searchQuery) {
+//     query.$or = [{ name: { $regex: new RegExp(searchQuery, "i") } },]
+//   }
+
+//   let sortOptions = {};
+
+//   switch (filter) {
+//     case "name":
+//       sortOptions = { name: 1 };
+//       break;
+//     case "year":
+//       sortOptions = { year: 1 };
+//       break;
+//     default:
+//       sortOptions = { createdAt: 1 };
+//       break;
+//   }
+
+//   const classes = await Class.find(query)
+//     .sort(sortOptions)
+//     .skip(skipAmount)
+//     .limit(limit);
+
+//   const classCount: number = await Class.countDocuments(query);
+
+//   const isNext = classCount > skipAmount + classes.length;
+
+//   const responseData = {
+//     currentPage: page,
+//     totalPages: Math.ceil(classCount / limit),
+//     totalCount: classCount,
+//     hasNextPage: isNext,
+//     data: classes
+//   };
+
+//   return res.status(200)
+//     .json(new ApiResponse(200, responseData, "All classes retrieved successfully"));
+// });
+
 const getAllClasses = asyncHandler(async (req, res) => {
   //#swagger.tags = ['Class']
 
-  const { searchQuery, filter, pageNumber = "1", pageSize = "10" } = req.query as {
+  const { searchQuery, filter, pageNumber = "1" } = req.query as {
     searchQuery?: string,
     filter?: string,
     pageNumber?: string,
-    pageSize?: string
   };
 
   const page: number = parseInt(pageNumber, 10) || 1;
-  const limit: number = parseInt(pageSize, 10) || 10;
-  const skipAmount: number = (page - 1) * limit;
+  const limitPerPage: number = 10;
+  const skipAmount: number = (page - 1) * limitPerPage;
 
   const query: FilterQuery<ClassDocument> = {};
 
@@ -140,23 +194,28 @@ const getAllClasses = asyncHandler(async (req, res) => {
   const classes = await Class.find(query)
     .sort(sortOptions)
     .skip(skipAmount)
-    .limit(limit);
+    .limit(limitPerPage);
 
   const classCount: number = await Class.countDocuments(query);
 
+  const totalCount = Math.ceil(classCount / limitPerPage)
   const isNext = classCount > skipAmount + classes.length;
 
+
   const responseData = {
-    currentPage: page,
-    totalPages: Math.ceil(classCount / limit),
-    totalCount: classCount,
-    hasNextPage: isNext,
+    pagination: {
+      currentPage: page,
+      totalPages: totalCount,
+      totalCount: classCount,
+      hasNextPage: isNext,
+    },
     data: classes
   };
 
   return res.status(200)
     .json(new ApiResponse(200, responseData, "All classes retrieved successfully"));
 });
+
 
 
 const getClassAnalytics = asyncHandler(async (req, res) => {

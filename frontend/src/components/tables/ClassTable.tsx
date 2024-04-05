@@ -28,7 +28,7 @@ const ClassTable: React.FC = () => {
 
         <DataTable data={classes.data} headers={headers} excludeKeys={excludeKeys} />
 
-        <Pagination totalPages={classes.totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
+        <Pagination totalPages={classes.pagination.totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
       </div>
     </div>
   );
