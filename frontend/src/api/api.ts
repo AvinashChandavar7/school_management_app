@@ -1,13 +1,21 @@
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../contexts/AppContext";
+
+import { API_BASE_URL } from "../constants/config";
 
 import { StudentType } from "../components/forms/CreateStudentForm";
 import { TeacherType } from "../components/forms/CreateTeacherForm";
 import { ClassType } from "../components/forms/CreateClassForm";
 
-import { API_BASE_URL } from "../constants/config";
+
+
 
 
 export const useCreateTeacher = () => {
+  const { showToast } = useAppContext();
+  const navigate = useNavigate();
+
   const createTeacher = async (formData: TeacherType) => {
     const response = await fetch(`${API_BASE_URL}/api/v1/teacher/`, {
       method: 'POST',
@@ -25,14 +33,23 @@ export const useCreateTeacher = () => {
   const {
     mutateAsync: createTeacherAsync,
     isLoading,
-    isError,
-    isSuccess
-  } = useMutation(createTeacher);
+  } = useMutation(createTeacher, {
+    onSuccess: () => {
+      showToast({ message: "Teacher created successfully", type: "SUCCESS" });
+      navigate("/teacher-table");
+    },
+    onError: () => {
+      showToast({ message: "Error creating teacher", type: "ERROR" });
+    },
+  });
 
-  return { createTeacherAsync, isLoading, isError, isSuccess };
+  return { createTeacherAsync, isLoading };
 };
 
 export const useCreateStudent = () => {
+  const { showToast } = useAppContext();
+  const navigate = useNavigate();
+
   const createStudent = async (formData: StudentType) => {
     const response = await fetch(`${API_BASE_URL}/api/v1/student/`, {
       method: 'POST',
@@ -50,15 +67,24 @@ export const useCreateStudent = () => {
   const {
     mutateAsync: createStudentAsync,
     isLoading,
-    isError,
-    isSuccess
-  } = useMutation(createStudent);
+  } = useMutation(createStudent, {
+    onSuccess: () => {
+      showToast({ message: "Student created successfully", type: "SUCCESS" });
+      navigate("/student-table");
+    },
+    onError: () => {
+      showToast({ message: "Error creating Student", type: "ERROR" });
+    },
+  });
 
-  return { createStudentAsync, isLoading, isError, isSuccess };
+  return { createStudentAsync, isLoading };
 };
 
 
 export const useCreateClass = () => {
+  const { showToast } = useAppContext();
+  const navigate = useNavigate();
+
   const createClass = async (formData: ClassType) => {
     const response = await fetch(`${API_BASE_URL}/api/v1/class/`, {
       method: 'POST',
@@ -76,9 +102,15 @@ export const useCreateClass = () => {
   const {
     mutateAsync: createClassAsync,
     isLoading,
-    isError,
-    isSuccess
-  } = useMutation(createClass);
+  } = useMutation(createClass, {
+    onSuccess: () => {
+      showToast({ message: "Class created successfully", type: "SUCCESS" });
+      navigate("/class-table");
+    },
+    onError: () => {
+      showToast({ message: "Error creating class", type: "ERROR" });
+    },
+  });
 
-  return { createClassAsync, isLoading, isError, isSuccess };
+  return { createClassAsync, isLoading };
 };

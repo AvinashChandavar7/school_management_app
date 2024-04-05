@@ -6,13 +6,11 @@ const LeftSidebar = () => {
 
   const { pathname } = useLocation();
 
-
-
   return (
     <nav className=" hidden md:flex px-4 py-10 flex-col justify-between min-w-[270px] bg-blue-100">
       <div className="flex flex-col gap-11">
-        <Link to="/dashboard" className="flex items-center justify-center gap-3 border rounded-md transform-cpu">
-          <img src="/assets/icons/logo.svg" alt="logo" className='w-10 h-20 rounded-full' />
+        <Link to="/dashboard" className="flex items-center justify-center rounded-md transform-cpu">
+          <img src="/assets/icons/logo.svg" alt="logo" className='w-10 h-10 rounded-full' />
         </Link>
 
         <ul className='flex flex-col gap-5'>

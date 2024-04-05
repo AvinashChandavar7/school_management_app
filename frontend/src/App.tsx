@@ -1,12 +1,16 @@
 import { Navigate, Route, Routes, } from "react-router-dom"
+
 import Layout from "./layouts/Layout"
-import CreateTeacher from "./pages/CreateStudent"
-import CreateStudent from "./pages/CreateStudent"
+
+import DashBoard from "./pages/DashBoard"
 import CreateClass from "./pages/CreateClass"
+import CreateTeacher from "./pages/CreateTeacher"
+import CreateStudent from "./pages/CreateStudent"
+
+
+import ClassTable from "./components/tables/ClassTable"
 import TeacherTable from "./components/tables/TeacherTable"
 import StudentTable from "./components/tables/StudentTable"
-import ClassTable from "./components/tables/ClassTable"
-import DashBoard from "./pages/DashBoard"
 
 const App = () => {
   return (
