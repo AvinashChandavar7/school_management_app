@@ -3,6 +3,7 @@ import { useGetClassPagination } from '../../api/get-api';
 import DataTable from './DataTable';
 import Heading from '../shared/Heading';
 import Pagination from './Pagination';
+import LoadingSkeleton from '../skeleton/LoadingSkeleton';
 
 const ClassTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -12,7 +13,7 @@ const ClassTable: React.FC = () => {
     setCurrentPage(page);
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSkeleton />;
   if (isError) return <div>Error fetching data</div>;
 
   const headers = ['Name', 'Year', 'Student Fees', 'Max Capacity',];

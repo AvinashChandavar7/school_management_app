@@ -2,18 +2,20 @@ import { useClassAnalytics, useFinancialAnalytics } from "../../api/analytics-ap
 import { useGetClass, useGetStudent, useGetTeacher } from "../../api/get-api";
 import BarChartComponent from "../charts/BarChartComponent";
 import PieChartComponent from "../charts/PieChartComponent";
+import CardsLoadingSkeleton from "../skeleton/CardsLoadingSkeleton";
+import ChartLoadingSkeleton from "../skeleton/ChartLoadingSkeleton";
 import Cards from "./Cards";
 
 const DashBoardComponent = () => {
-  const { teachers } = useGetTeacher();
-  const { students } = useGetStudent();
-  const { classes } = useGetClass();
+  const { teachers, isLoading: isTeacherLoading } = useGetTeacher();
+  const { students, isLoading: isStudentLoading } = useGetStudent();
+  const { classes, isLoading: isClassLoading } = useGetClass();
 
   const classId = "660dabe9dececd4599101b15" as string;
 
   const {
     classAnalytics,
-    isLoading: isClassLoading,
+    isLoading: isClassAnalyticsLoading,
     isError: isClassError,
   } = useClassAnalytics(classId);
 
@@ -24,10 +26,17 @@ const DashBoardComponent = () => {
   } = useFinancialAnalytics(classId);
 
 
-  if (isClassLoading || isFinancialLoading) {
-    return <div>Loading...</div>;
+  if (isTeacherLoading || isStudentLoading || isClassLoading || isClassAnalyticsLoading || isFinancialLoading) {
+    return (
+      <>
+        <CardsLoadingSkeleton />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <ChartLoadingSkeleton />
+          <ChartLoadingSkeleton />
+        </div>
+      </>
+    );
   }
-
   if (isClassError || isFinancialError) {
     return <div>Error fetching data.</div>;
   }
