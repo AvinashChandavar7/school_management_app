@@ -77,7 +77,7 @@ export const useGetClass = () => {
 };
 
 export const useGetClassPagination = (pageNumber: number) => {
-  console.log("useGetClassPagination", pageNumber);
+
   const getClass = async () => {
     const response = await fetch(`${API_BASE_URL}/api/v1/class?pageNumber=${pageNumber}`);
 
@@ -96,7 +96,7 @@ export const useGetClassPagination = (pageNumber: number) => {
     isLoading,
     isError,
     isSuccess
-  } = useQuery('classes', getClass);
+  } = useQuery(['classes', pageNumber], getClass);
 
   const classes = classData?.data || [];
 
