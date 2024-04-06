@@ -21,7 +21,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
       <button
         key={index}
         onClick={() => handleClick(pageNumber)}
-        className={`mx-1 px-3 py-1 rounded-lg ${pageNumber === currentPage
+        className={`mx-1 px-3 py-1 rounded-md ${pageNumber === currentPage
           ? "bg-blue-400 font-bold text-white"
           : "bg-gray-200 hover:bg-gray-300 text-gray-700"
           } focus:outline-none`}
@@ -32,11 +32,11 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
   }, [totalPages, currentPage, handleClick]);
 
   return (
-    <div className="flex justify-center my-4">
+    <div className="flex items-center justify-center mt-1 mb-2">
       <button
         onClick={() => handleClick(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1 mx-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none"
+        className="px-3 py-1 mx-1 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none"
       >
         Prev
       </button>
@@ -46,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPage
       <button
         onClick={() => handleClick(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 mx-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none"
+        className="px-3 py-1 mx-1 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none"
       >
         Next
       </button>

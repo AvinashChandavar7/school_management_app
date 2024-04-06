@@ -76,10 +76,10 @@ export const useGetClass = () => {
   return { classes, isLoading, isError, isSuccess };
 };
 
-export const useGetClassPagination = (pageNumber: number) => {
+export const useGetClassPagination = (pageNumber: number, searchTerm: string = '') => {
 
-  const getClass = async (pageNumber: number) => {
-    const response = await fetch(`${API_BASE_URL}/api/v1/class?pageNumber=${pageNumber}`);
+  const getClass = async (pageNumber: number, searchTerm: string = '') => {
+    const response = await fetch(`${API_BASE_URL}/api/v1/class?pageNumber=${pageNumber}&searchQuery=${encodeURIComponent(searchTerm)}`);
 
     if (!response.ok) {
       throw new Error('Failed to get classes');
@@ -96,8 +96,8 @@ export const useGetClassPagination = (pageNumber: number) => {
     isLoading,
     isError,
     isSuccess
-  } = useQuery(['classes', pageNumber],
-    () => getClass(pageNumber),
+  } = useQuery(['classes', pageNumber, searchTerm],
+    () => getClass(pageNumber, searchTerm),
     { staleTime: 5 * 60 * 1000 }
   );
 
